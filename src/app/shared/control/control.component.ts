@@ -1,4 +1,12 @@
-import { Component, input, ViewEncapsulation, HostBinding } from '@angular/core';
+import {
+  Component,
+  input,
+  ViewEncapsulation,
+  HostBinding,
+  HostListener,
+  inject,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -7,13 +15,23 @@ import { Component, input, ViewEncapsulation, HostBinding } from '@angular/core'
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
   encapsulation: ViewEncapsulation.None,
-  // host: {
-  //   class : 'control',
-  // }
+  host: {
+    class: 'control',
+    '(click)': 'onClick()',
+  },
 })
 export class ControlComponent {
+  // @HostBinding('class') className = 'control';
+  // @HostListener('click') onClick() {
+  //   console.log('Clicked!');
+  // }
 
-  @HostBinding('class') className = 'control';
+  private el = inject(ElementRef);
 
   label = input.required<string>();
+
+  onClick() {
+    console.log('Clicked!');
+    console.log(this.el);
+  }
 }
