@@ -1,7 +1,7 @@
 :host {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 :host ul {
@@ -24,6 +24,14 @@
   margin: 0;
   font-size: 1.1rem;
   color: #38343c;
+}
+
+#ticket {
+  width: 10rem;
+}
+
+#new-ticket {
+  width: 10rem;
 }
 
 @media (min-width: 768px) {
