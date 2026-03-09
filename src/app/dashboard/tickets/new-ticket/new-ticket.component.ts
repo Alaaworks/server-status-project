@@ -23,28 +23,33 @@ import { ControlComponent } from '../../../shared/control/control.component';
 export class NewTicketComponent implements OnInit, AfterViewInit {
   // @ViewChild('form') private form ?: ElementRef<HTMLFormElement>
 
-  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  // private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+  enteredTitle = '';
+  enteredText = '';
 
   @Output() add = new EventEmitter<{
     title: string;
     request: string;
   }>();
 
-  onSubmit(title: string, ticketText: string) {
+  onSubmit() {
     this.add.emit({
-      title: title,
-      request: ticketText,
+      title: this.enteredTitle,
+      request: this.enteredText,
     });
-    this.form().nativeElement.reset();
+    // this.form().nativeElement.reset();
+    this.enteredText = '';
+    this.enteredTitle = '';
   }
 
   ngOnInit() {
     console.log('On Init');
-    console.log(this.form().nativeElement);
+    // console.log(this.form().nativeElement);
   }
 
   ngAfterViewInit() {
     console.log('After View Init');
-    console.log(this.form().nativeElement);
+    // console.log(this.form().nativeElement);
   }
 }
